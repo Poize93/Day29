@@ -6,6 +6,7 @@ import {
   Route,
   Link,
   useNavigate,
+  Outlet,
 } from 'react-router-dom';
 import User from './User';
 
@@ -20,6 +21,9 @@ export default function RouterComponent() {
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
           <Route path="/aboutus" element={<AboutUs />}></Route>
+          <Route path="" element={<AboutUsIndex />}></Route>
+          {/* <Route path="history" element={<History />}></Route>
+          <Route path="branches" element={<Branches/>}></Route> */}
           <Route path="/contactus" element={<ContactUs />}></Route>
           <Route
             path="/user/:userId/course/:courseId"
@@ -36,28 +40,69 @@ function Dashboard() {
   return (
     <>
       <h3>DashBoard </h3>
-      <button onClick={()=>navigate(-1)}>GoBack</button> &nbsp;
-      <button onClick={()=>navigate(1)}>Go Forward</button>
+      <button onClick={() => navigate(-1)}>Go Back</button> &nbsp;
+      <button onClick={() => navigate(1)}>Go Forward</button> &nbsp;&nbsp;
+      <button
+        onClick={() =>
+          navigate('/User/4/course/10?acvsf&df', {
+            state: { name: 'XXX', age: 10 },
+          })
+        }
+      >
+        UserComponent
+      </button>
     </>
   );
 }
 
 function AboutUs() {
+  const navigate = useNavigate();
   return (
     <>
       <h3>AboutUs </h3>
-      <button onClick={()=>navigate(-1)}>GoBack</button> &nbsp;
-      <button onClick={()=>navigate(1)}>Go Forward</button>
+      <button onClick={() => navigate(-1)}>Go Back</button> &nbsp;
+      <button onClick={() => navigate(1)}>Go Forward</button>
+      <br />
+      <button onClick={() => navigate('/aboutus/history')}>History</button>
+      &nbsp;
+      <button onClick={() => navigate('/aboutus/branches')}>Branches</button>
+      <br />
+      <Outlet />
+    </>
+  );
+}
+
+function AboutUsIndex() {
+  return (
+    <>
+      <h3>AboutUs Home Page</h3>
     </>
   );
 }
 
 function ContactUs() {
+  const navigate = useNavigate();
   return (
     <>
       <h3>Contact Us </h3>
-      <button onClick={()=>navigate(-1)}>GoBack</button> &nbsp;
-      <button onClick={()=>navigate(1)}>Go Forward</button>
+      <button onClick={() => navigate(-1)}>Go Back</button> &nbsp;
+      <button onClick={() => navigate(1)}>Go Forward</button>
     </>
   );
+
+  function History() {
+    return (
+      <>
+        <h3>History</h3>
+      </>
+    );
+  }
+
+  function Branches() {
+    return (
+      <>
+        <h3>Branches</h3>
+      </>
+    );
+  }
 }
