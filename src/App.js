@@ -23,7 +23,7 @@ export default function RouterComponent() {
           <Route path="/aboutus" element={<AboutUs />}></Route>
           <Route path="" element={<AboutUsIndex />}></Route>
           {/* <Route path="history" element={<History />}></Route>
-          <Route path="branches" element={<Branches/>}></Route> */}
+              <Route path="branches" element={<Branches/>}></Route> */}
           <Route path="/contactus" element={<ContactUs />}></Route>
           <Route
             path="/user/:userId/course/:courseId"
