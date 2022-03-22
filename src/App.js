@@ -20,10 +20,12 @@ export default function RouterComponent() {
         <Link to="/aboutus">About Us</Link> &nbsp;
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
-          <Route path="/aboutus" element={<AboutUs />}></Route>
-          <Route path="" element={<AboutUsIndex />}></Route>
-          {/* <Route path="history" element={<History />}></Route>
-              <Route path="branches" element={<Branches/>}></Route> */}
+
+          <Route path="/aboutus" element={<AboutUs />}>
+            <Route path="" element={<AboutUsIndex />} />
+            <Route path="history" element={<History />} />
+            <Route path="branches" element={<Branches />} />
+          </Route>
           <Route path="/contactus" element={<ContactUs />}></Route>
           <Route
             path="/user/:userId/course/:courseId"
@@ -72,14 +74,6 @@ function AboutUs() {
   );
 }
 
-function AboutUsIndex() {
-  return (
-    <>
-      <h3>AboutUs Home Page</h3>
-    </>
-  );
-}
-
 function ContactUs() {
   const navigate = useNavigate();
   return (
@@ -89,20 +83,27 @@ function ContactUs() {
       <button onClick={() => navigate(1)}>Go Forward</button>
     </>
   );
+}
+function History() {
+  return (
+    <>
+      <h3>History</h3>
+    </>
+  );
+}
 
-  function History() {
-    return (
-      <>
-        <h3>History</h3>
-      </>
-    );
-  }
+function Branches() {
+  return (
+    <>
+      <h3>Branches</h3>
+    </>
+  );
+}
 
-  function Branches() {
-    return (
-      <>
-        <h3>Branches</h3>
-      </>
-    );
-  }
+function AboutUsIndex() {
+  return (
+    <>
+      <h3>AboutUs Home Page</h3>
+    </>
+  );
 }
